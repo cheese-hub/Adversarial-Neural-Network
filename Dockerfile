@@ -9,7 +9,7 @@ RUN pip install matplotlib
 RUN pip install numpy
 
 
-COPY  ./ /home/jovyan/work/
+COPY  ./files /home/jovyan/
 
 RUN pip install jupyter_contrib_nbextensions
 
@@ -18,8 +18,6 @@ RUN jupyter contrib nbextension install --user
 EXPOSE 8888
 
 # Run Jupyter Notebook on container start
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+#CMD ["jupyter", "notebook", "--port=8888", "--no-browser"]
 
-
-
-
+CMD ["jupyter", "notebook", "--NotebookApp.token=", "--NotebookApp.max_buffer_size=2000000000"]
